@@ -4,6 +4,7 @@ return {
   config = function()
     local colors = {
       blue = "#80a0ff",
+      pale_blue = "#6bb4d6",
       cyan = "#79dac8",
       black = "#080808",
       white = "#c6c6c6",
@@ -14,7 +15,7 @@ return {
 
     local bubbles_theme = {
       normal = {
-        a = { fg = colors.black, bg = colors.violet },
+        a = { fg = colors.black, bg = colors.pale_blue },
         b = { fg = colors.white, bg = colors.grey },
         c = { fg = colors.white },
       },
@@ -34,6 +35,7 @@ return {
 
     lualine.setup({
       options = {
+        theme = bubbles_theme,
         component_separators = "",
         section_separators = { left = "", right = "" },
       },
@@ -41,7 +43,10 @@ return {
         lualine_a = { { "mode", right_padding = 2 } },
         lualine_b = { "filename", "branch" },
         lualine_c = {
-          "%=", --[[ add your center compoentnts here in place of this comment ]]
+          {
+            "filename",
+            path = 1,
+          },
         },
         lualine_x = {},
         lualine_y = { "filetype", "progress" },
